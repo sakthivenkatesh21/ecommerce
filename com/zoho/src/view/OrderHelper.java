@@ -1,7 +1,5 @@
 package com.zoho.src.view;
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
 import com.zoho.src.controller.OrderController;
 import com.zoho.src.controller.ProductController;
 import com.zoho.src.interfaceController.Execute;
@@ -11,6 +9,8 @@ import com.zoho.src.model.Client;
 import com.zoho.src.model.Order;
 import com.zoho.src.model.Seller;
 import com.zoho.src.model.User;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 public class OrderHelper implements Execute, Viewable {
   private final Scanner sc;

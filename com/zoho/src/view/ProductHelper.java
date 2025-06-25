@@ -1,8 +1,5 @@
 package com.zoho.src.view;
 
-import java.util.InputMismatchException;
-import java.util.List;
-import java.util.Scanner;
 import com.zoho.src.controller.ProductController;
 import com.zoho.src.interfaceController.Creatable;
 import com.zoho.src.interfaceController.Deletable;
@@ -12,6 +9,9 @@ import com.zoho.src.interfaceController.Viewable;
 import com.zoho.src.model.Category;
 import com.zoho.src.model.Product;
 import com.zoho.src.model.User;
+import java.util.InputMismatchException;
+import java.util.List;
+import java.util.Scanner;
 
 public class ProductHelper implements Execute, Creatable, Editable, Viewable, Deletable {
     private final Scanner sc;

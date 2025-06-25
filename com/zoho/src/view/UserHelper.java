@@ -1,7 +1,5 @@
 package com.zoho.src.view;
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
 import com.zoho.src.controller.UserController;
 import com.zoho.src.interfaceController.Editable;
 import com.zoho.src.interfaceController.Execute;
@@ -9,6 +7,8 @@ import com.zoho.src.interfaceController.Viewable;
 import com.zoho.src.model.Client;
 import com.zoho.src.model.Seller;
 import com.zoho.src.model.User;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 public class UserHelper implements Execute, Editable, Viewable {
     private final User loggedInUser;
