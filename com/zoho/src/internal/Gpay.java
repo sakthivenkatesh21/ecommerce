@@ -1,6 +1,6 @@
-package zohoincubation.com.zoho.ecommerce.src.internal;
+package com.zoho.src.internal;
 
-import zohoincubation.com.zoho.ecommerce.src.paymentCreditionals.IPaymentGateway;
+import com.zoho.src.paymentCreditionals.IPaymentGateway;
 
 public class Gpay implements IPaymentGateway {
     private final double amount;

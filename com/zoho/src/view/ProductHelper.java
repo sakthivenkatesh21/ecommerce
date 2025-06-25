@@ -1,17 +1,17 @@
-package zohoincubation.com.zoho.ecommerce.src.view;
+package com.zoho.src.view;
 
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
-import zohoincubation.com.zoho.ecommerce.src.controller.ProductController;
-import zohoincubation.com.zoho.ecommerce.src.interfaceController.Creatable;
-import zohoincubation.com.zoho.ecommerce.src.interfaceController.Deletable;
-import zohoincubation.com.zoho.ecommerce.src.interfaceController.Editable;
-import zohoincubation.com.zoho.ecommerce.src.interfaceController.Execute;
-import zohoincubation.com.zoho.ecommerce.src.interfaceController.Viewable;
-import zohoincubation.com.zoho.ecommerce.src.model.Category;
-import zohoincubation.com.zoho.ecommerce.src.model.Product;
-import zohoincubation.com.zoho.ecommerce.src.model.User;
+import com.zoho.src.controller.ProductController;
+import com.zoho.src.interfaceController.Creatable;
+import com.zoho.src.interfaceController.Deletable;
+import com.zoho.src.interfaceController.Editable;
+import com.zoho.src.interfaceController.Execute;
+import com.zoho.src.interfaceController.Viewable;
+import com.zoho.src.model.Category;
+import com.zoho.src.model.Product;
+import com.zoho.src.model.User;
 
 public class ProductHelper implements Execute, Creatable, Editable, Viewable, Deletable {
     private final Scanner sc;

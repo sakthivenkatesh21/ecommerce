@@ -1,7 +1,7 @@
-package zohoincubation.com.zoho.ecommerce.src.view;
+package com.zoho.src.view;
 
-import zohoincubation.com.zoho.ecommerce.src.model.Order;
-import zohoincubation.com.zoho.ecommerce.src.model.OrderStatus;
+import com.zoho.src.model.Order;
+import com.zoho.src.model.OrderStatus;
 
 class OrderStatusUpdate {
 

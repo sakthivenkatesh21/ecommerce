@@ -1,8 +1,7 @@
-package zohoincubation.com.zoho.ecommerce.src.interfaceController;
+package com.zoho.src.interfaceController;
 
+import com.zoho.src.model.User;
 import java.util.Scanner;
-
-import zohoincubation.com.zoho.ecommerce.src.model.User;
 
 public interface Execute {
     String getfunctionName();

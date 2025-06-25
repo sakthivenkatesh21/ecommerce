@@ -1,4 +1,4 @@
-package zohoincubation.com.zoho.ecommerce.src.model;
+package com.zoho.src.model;
 
 import java.util.ArrayList;
 import java.util.List;

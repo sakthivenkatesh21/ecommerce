@@ -1,7 +1,7 @@
-package zohoincubation.com.zoho.ecommerce.src.controller;
+package com.zoho.src.controller;
 
 import java.util.List;
-import zohoincubation.com.zoho.ecommerce.src.model.Category;
+import com.zoho.src.model.Category;
 
 public class CategoryController {
     private static List<Category> category = DataManager.getDataManager().getCategory();

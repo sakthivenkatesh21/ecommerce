@@ -1,8 +1,8 @@
-package zohoincubation.com.zoho.ecommerce.src.model;
+package com.zoho.src.model;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import zohoincubation.com.zoho.ecommerce.src.interfaceController.Execute;
+import com.zoho.src.interfaceController.Execute;
 
 public abstract class User {
 

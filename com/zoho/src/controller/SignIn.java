@@ -1,8 +1,8 @@
-package zohoincubation.com.zoho.ecommerce.src.controller;
+package com.zoho.src.controller;
 
 import java.util.List;
 
-import zohoincubation.com.zoho.ecommerce.src.model.User;
+import com.zoho.src.model.User;
 
 public class SignIn {
 

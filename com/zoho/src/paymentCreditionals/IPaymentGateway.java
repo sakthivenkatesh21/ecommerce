@@ -1,4 +1,4 @@
-package zohoincubation.com.zoho.ecommerce.src.paymentCreditionals;
+package com.zoho.src.paymentCreditionals;
 
 public interface IPaymentGateway {
 

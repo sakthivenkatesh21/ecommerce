@@ -1,9 +1,9 @@
-package zohoincubation.com.zoho.ecommerce.src.view;
+package com.zoho.src.view;
 
 import java.util.Scanner;
-import zohoincubation.com.zoho.ecommerce.src.controller.SignIn;
-import zohoincubation.com.zoho.ecommerce.src.controller.UserController;
-import zohoincubation.com.zoho.ecommerce.src.model.User;
+import com.zoho.src.controller.SignIn;
+import com.zoho.src.controller.UserController;
+import com.zoho.src.model.User;
 
 public class LoggingCredentials {
     private User logInUser;

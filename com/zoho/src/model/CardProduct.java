@@ -1,4 +1,4 @@
-package zohoincubation.com.zoho.ecommerce.src.model;
+package com.zoho.src.model;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

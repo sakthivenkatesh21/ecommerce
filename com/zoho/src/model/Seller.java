@@ -1,13 +1,13 @@
-package zohoincubation.com.zoho.ecommerce.src.model;
+package com.zoho.src.model;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import zohoincubation.com.zoho.ecommerce.src.interfaceController.Execute;
-import zohoincubation.com.zoho.ecommerce.src.view.CategoryHelper;
-import zohoincubation.com.zoho.ecommerce.src.view.OrderHelper;
-import zohoincubation.com.zoho.ecommerce.src.view.ProductHelper;
-import zohoincubation.com.zoho.ecommerce.src.view.UserHelper;
+import com.zoho.src.interfaceController.Execute;
+import com.zoho.src.view.CategoryHelper;
+import com.zoho.src.view.OrderHelper;
+import com.zoho.src.view.ProductHelper;
+import com.zoho.src.view.UserHelper;
 
 public class Seller extends User {
     

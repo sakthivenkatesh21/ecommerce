@@ -1,11 +1,11 @@
-package zohoincubation.com.zoho.ecommerce.src.controller;
+package com.zoho.src.controller;
 
+import com.zoho.src.model.Category;
+import com.zoho.src.model.Order;
+import com.zoho.src.model.Product;
+import com.zoho.src.model.User;
 import java.util.ArrayList;
 import java.util.List;
-import zohoincubation.com.zoho.ecommerce.src.model.Category;
-import zohoincubation.com.zoho.ecommerce.src.model.Order;
-import zohoincubation.com.zoho.ecommerce.src.model.Product;
-import zohoincubation.com.zoho.ecommerce.src.model.User;
 
 public class DataManager {
 

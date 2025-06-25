@@ -1,4 +1,4 @@
-package zohoincubation.com.zoho.ecommerce.src.view;
+package com.zoho.src.view;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;

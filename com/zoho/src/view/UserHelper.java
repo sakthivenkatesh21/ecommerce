@@ -1,14 +1,14 @@
-package zohoincubation.com.zoho.ecommerce.src.view;
+package com.zoho.src.view;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import zohoincubation.com.zoho.ecommerce.src.controller.UserController;
-import zohoincubation.com.zoho.ecommerce.src.interfaceController.Editable;
-import zohoincubation.com.zoho.ecommerce.src.interfaceController.Execute;
-import zohoincubation.com.zoho.ecommerce.src.interfaceController.Viewable;
-import zohoincubation.com.zoho.ecommerce.src.model.Client;
-import zohoincubation.com.zoho.ecommerce.src.model.Seller;
-import zohoincubation.com.zoho.ecommerce.src.model.User;
+import com.zoho.src.controller.UserController;
+import com.zoho.src.interfaceController.Editable;
+import com.zoho.src.interfaceController.Execute;
+import com.zoho.src.interfaceController.Viewable;
+import com.zoho.src.model.Client;
+import com.zoho.src.model.Seller;
+import com.zoho.src.model.User;
 
 public class UserHelper implements Execute, Editable, Viewable {
     private final User loggedInUser;

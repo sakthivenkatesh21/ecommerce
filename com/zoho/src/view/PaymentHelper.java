@@ -1,8 +1,8 @@
-package zohoincubation.com.zoho.ecommerce.src.view;
+package com.zoho.src.view;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import zohoincubation.com.zoho.ecommerce.src.controller.PaymentController;
+import com.zoho.src.controller.PaymentController;
 
 public class PaymentHelper {
     public static String paymentProcess(Scanner sc, double amount) {

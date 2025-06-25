@@ -1,12 +1,12 @@
-package zohoincubation.com.zoho.ecommerce.src.controller;
+package com.zoho.src.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import zohoincubation.com.zoho.ecommerce.src.model.CardProduct;
-import zohoincubation.com.zoho.ecommerce.src.model.Category;
-import zohoincubation.com.zoho.ecommerce.src.model.Product;
-import zohoincubation.com.zoho.ecommerce.src.model.Seller;
-import zohoincubation.com.zoho.ecommerce.src.model.User;
+import com.zoho.src.model.CardProduct;
+import com.zoho.src.model.Category;
+import com.zoho.src.model.Product;
+import com.zoho.src.model.Seller;
+import com.zoho.src.model.User;
 
 public class ProductController {
     private static int idGenerator;
