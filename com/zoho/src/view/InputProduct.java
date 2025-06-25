@@ -1,26 +1,29 @@
 package com.zoho.src.view;
 
 
-import java.util.List;
 import com.zoho.src.controller.CategoryController;
 import com.zoho.src.controller.DataManager;
 import com.zoho.src.controller.ProductController;
 import com.zoho.src.controller.UserController;
 import com.zoho.src.model.Category;
-import com.zoho.src.model.Product;
 import com.zoho.src.model.User;
+import java.util.List;
 
-public class InputProduct {
-    private static List<Product> productList = DataManager.getDataManager().getProduct();
-    private static List<User> userList = DataManager.getDataManager().getUser();
-    private static List<Category> categoryList = DataManager.getDataManager().getCategory();
-    public  InputProduct() {
-        
+final class InputProduct {
+
+    // use private final to prevent modification of data
+    private final  List<User> userList = DataManager.getDataManager().getUser();
+    private final  List<Category> categoryList = DataManager.getDataManager().getCategory();
+
+    //default constructor to create product data
+    InputProduct() {
         createCategoryData();
         createSeller();
         createProductData();
     }
-    public  static   void  createProductData() {
+
+    // creating product data
+    void  createProductData() {
         // Products by User 1
         ProductController.createProduct( "Poco X7 Smartphone", "Latest model smartphone", 800.00, 20, categoryList.get(0), userList.get(0));
         ProductController.createProduct( "Boat Headphones", "Noise-cancelling headphones", 200.00, 15, categoryList.get(0), userList.get(0));
@@ -57,7 +60,9 @@ public class InputProduct {
         ProductController.createProduct("Wilson Tennis Racket", "Professional-grade tennis racket", 200.00, 10, categoryList.get(6), userList.get(3));
         ProductController.createProduct("Maybelline Lipstick", "Long-lasting lipstick", 20.00, 50, categoryList.get(7), userList.get(3));
     }
-    public static void createCategoryData() {
+
+    // creating category data
+    void createCategoryData() {
         CategoryController.createCategory( "Electronics", "Devices and gadgets");
         CategoryController.createCategory( "Accessories", "Additional items for devices");
         CategoryController.createCategory( "Wearables", "Smart wearable technology");
@@ -67,7 +72,9 @@ public class InputProduct {
         CategoryController.createCategory( "Sports", "Sports equipment and apparel");
         CategoryController.createCategory( "Beauty", "Beauty and personal care products");
     }
-    public static void createSeller() {
+
+    // creating seller data
+    void createSeller() {
         UserController.createUser("Karthi","9025149404","karthi@gmail.com","Karthi@1","Male","Karthi Enterprises","Chennai");
         UserController.createUser("Mani", "6869585858", "mani@gmail.com", "Mani@1", "Male", "Mani Industries", "Coimbatore");
         UserController.createUser("Tanishka", "9585859685", "tanishka@gmail.com", "Tanishka@1", "Female", "Tanishka Creations", "Bangalore");

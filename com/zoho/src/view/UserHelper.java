@@ -177,8 +177,8 @@ public class UserHelper implements Execute, Editable, Viewable {
     public static String[] getDetails(Scanner sc,User loggedInUser) {
         ValidData check = new ValidData(sc);
         String name = check.name("🧑 Enter your Name :");
-        String phone = isPhoneExists(check.phone("📱 Enter a valid phone number: "), check,loggedInUser);
-        String email = isEmailExists(check.email("📧 Enter a valid email address: "), check,loggedInUser);
+        String phone = isPhoneExists(check.phone("📱 Enter a valid Phone number: "), check,loggedInUser);
+        String email = isEmailExists(check.email("📧 Enter a valid Email : "), check,loggedInUser);
         String password = check.password("🔒 Type your Password:");
         String gender = check.gender("🚻 Enter your Gender:");
         int  userType = 0;
@@ -204,7 +204,7 @@ public class UserHelper implements Execute, Editable, Viewable {
             
         
 
-
+// check duplicate Email exists
     private static String isEmailExists(String email, ValidData check,User loggedInUser) {
         while (UserController.isMailExists(email,loggedInUser)) {
             System.out.println("❌ Email already exists. Please try again with a different email.");
@@ -212,7 +212,7 @@ public class UserHelper implements Execute, Editable, Viewable {
         }
         return email;
     }
-
+// checking duplicate Phone number exists
     private static String isPhoneExists(String phone, ValidData check,User loggedInUser) {
         while (UserController.isPhoneExists(phone, loggedInUser)) {
             

@@ -16,7 +16,6 @@ import java.util.Scanner;
 public class ProductHelper implements Execute, Creatable, Editable, Viewable, Deletable {
     private final Scanner sc;
     private final User loggedInUser;
-    // private Category category;
 
     private final int  CLIENT = 1;
     private final int  SELLER = 2;
@@ -94,7 +93,6 @@ public class ProductHelper implements Execute, Creatable, Editable, Viewable, De
         String productDescription = validator.address("📝 Enter a New Product Description:");
         double productPrice = getPrice("💰 Enter the new Product Price:");
         int productStock = getStock("📦 Enter the new Product Stock:");
-        // sc.nextLine();
         Product product = ProductController.createProduct(productName,productDescription,productPrice,productStock,category,loggedInUser);
         if (product == null) {
             System.out.println("❌ Product with the same name already exists.");
@@ -106,7 +104,7 @@ public class ProductHelper implements Execute, Creatable, Editable, Viewable, De
     @Override
     public void view() {
         if (loggedInUser.getRole() == SELLER) {
-            sellerView();
+            CategoryHelper.viewCategoryForProducts(sc);   
         } 
         else {
             while (true) {
@@ -203,29 +201,29 @@ public class ProductHelper implements Execute, Creatable, Editable, Viewable, De
 
 
 // Common logic For Update and Delete
-    private Product checkGetProduct() {
 
-        Category category = CategoryHelper.getCategory(sc);
-        if (category == null || category.getProduct().isEmpty()) {
-            System.out.println("⚠️ No product is available.");
-            return null;
-        }
-        showCategoryProducts(category);
-        System.out.println("🆔 Enter the Product ID  or 0 to exit:");
-        int productId = sc.nextInt();
-        sc.nextLine();
-        if (productId == 0) {
-            System.out.println("🔙 Exiting to previous menu.");
-            return null;
-        } else {
-            Product product = ProductController.isProductExist(productId);
-            if (product != null && category.getProduct().contains(product)) {
-                return product;
-            } else {
-                System.out.println("❌ Product not found in the selected category.");
-                return null;
+    private Product checkGetProduct() {
+        // (viewCategoryForProducts)Methods Call to Display All Category with Products 
+        Product product  = null;
+        if(CategoryHelper.viewCategoryForProducts(sc)){
+            System.out.println("🆔 Enter the Product ID  or 0 to exit:");
+            try {
+                int productId = sc.nextInt();
+                sc.nextLine();
+                if (productId == 0) 
+                    System.out.println("🔙 Exiting to previous menu.");
+                else
+                 product = ProductController.isProductExist(productId);
+            }
+            catch( InputMismatchException e){
+                System.out.println("❌ Invalid input. Please enter a valid Product ID.");
+                sc.nextLine();
+            }
+            catch (Exception e) {
+                System.out.println("❌ An unexpected error occurred: " + e.getMessage());
             }
         }
+        return product;
     }
 
     private void search() {
@@ -240,11 +238,7 @@ public class ProductHelper implements Execute, Creatable, Editable, Viewable, De
             System.out.println("✅ Product found in Category: " + obj.getCategory().getName());
             System.out.println("📝 Product Details: \n  " + obj);
         }
-        // System.out.println("****************************************");
-        // System.out.println("*                                      *");
         System.out.println(" *        🔎 Product Search Options    *" );
-        // System.out.println("*                                      *");
-        // System.out.println("****************************************");
         System.out.println("****************************************");
         System.out.println("1. ❤️ Add to Wish List");
         System.out.println("2. 🔎 Search Product Again");
@@ -270,10 +264,10 @@ public class ProductHelper implements Execute, Creatable, Editable, Viewable, De
         }
     }
 
+//  Adding Product to Wish List(View And Add Product to Wish List)
     private void addWishList() {
       
         while (true) {
-            // showCategoryProducts(category);
             if(clientView()){
                 if (!addingProductToCart()) {
                     System.out.println("🔙 Exiting to previous menu.");
@@ -282,6 +276,7 @@ public class ProductHelper implements Execute, Creatable, Editable, Viewable, De
             }      
         }
     }
+// logic of adding Product to Wish List (View and Add Product to Wish List)
 
     private boolean addingProductToCart() {
         System.out.println("🆔 Enter the Product ID to add to cart or 0 to exit:");
@@ -297,13 +292,13 @@ public class ProductHelper implements Execute, Creatable, Editable, Viewable, De
             System.out.println("⚠️ Product is out of stock.");
             return false;
         }
-        // category = product.getCategory();
         System.out.println("✅ Product found: \n" + product);
         WishlistHandler addCard = new WishlistHandler(product, sc, loggedInUser);
         addCard.add();
         return true;
     }
 
+    // display All products  
     private  boolean clientView() {
         List<Product> product = ProductController.getProducts();
         if (product == null) return  false;
@@ -315,37 +310,7 @@ public class ProductHelper implements Execute, Creatable, Editable, Viewable, De
         return true;
     }
 
-    private void  sellerView() {
-        Category category = CategoryHelper.getCategory(sc);
-        if (category == null || category.getProduct().isEmpty()) {
-            System.out.println("⚠️ No product is available.");
-            return;
-        }
-        showCategoryProducts(category);
-    }
-        // for view    the Category Vise Products (For Seller and Client)
-        private void showCategoryProducts(Category category) {
-            System.out.println("🛍️ Products in Category: " + category.getName() + "\n");
-            if (loggedInUser.getRole() == SELLER) {
-                List<Product> product = ProductController.getSellerProducts(category, loggedInUser);
-                printCategoryProducts(product);    
-            } else if (loggedInUser.getRole() == CLIENT) {
-                   printCategoryProducts(category.getProduct());    
-            }
-        }
-        // helper method for show Category products
-        private void printCategoryProducts(List<Product> products) {
-            if (products.isEmpty()) {
-                System.out.println("⚠️ No products available in this category.");
-                return;
-            }
-            for (Product product : products) {
-                System.out.println(product);
-            }
-        }
-
-
-       // input validation for product price(Reuse Methods for update and add)
+    // input validation for product price(Reuse Methods for update and add)
     private double  getPrice(String info){
         System.out.println(info);
         double productPrice = sc.nextDouble();
@@ -368,6 +333,7 @@ public class ProductHelper implements Execute, Creatable, Editable, Viewable, De
         sc.nextLine();
         return productStock;
     }
+
 // restock the Seller product 
     private void reStock() { 
         List<Product> product = ProductController.getEmptyStockProducts(loggedInUser);
@@ -397,6 +363,7 @@ public class ProductHelper implements Execute, Creatable, Editable, Viewable, De
             }
         }
     } 
+
     private void  reStockAll(List<Product> product) {
         while(true){
             viewReStockk(product);
@@ -417,6 +384,7 @@ public class ProductHelper implements Execute, Creatable, Editable, Viewable, De
         }
        
     }
+
     private void  viewReStockk(List<Product> product) {  
         System.out.println("📦 Products available for restocking:");
         System.out.println("------------------------------------------------");
@@ -426,4 +394,6 @@ public class ProductHelper implements Execute, Creatable, Editable, Viewable, De
         System.out.println("------------------------------------------------");
 
     }
+
 }
+

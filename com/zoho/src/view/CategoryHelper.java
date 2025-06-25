@@ -38,7 +38,6 @@ public class CategoryHelper implements Execute, Creatable, Editable, Viewable, D
                 if (loggedInUser.getRole() == CLIENT) {
                     view();
                     return;
-                    // System.out.println("1️⃣ View Categories Products \n0️⃣ Exit");
                 } else if (loggedInUser.getRole() == SELLER) {
                     System.out.println("1️⃣ Add Category \n2️⃣ View Categories \n3️⃣ Delete Category \n4️⃣ Update Category \n0️⃣ Exit");
                 }
@@ -92,7 +91,7 @@ public class CategoryHelper implements Execute, Creatable, Editable, Viewable, D
                     int choice = sc.nextInt();
                     sc.nextLine();
                     switch(choice){
-                        case 1-> viewCategoryForProducts();
+                        case 1-> viewCategoryForProducts(sc);
                         case 2-> viewAllCategories();
                         case 0-> {
                             System.out.println("🚪 Exiting Category View.");
@@ -109,22 +108,24 @@ public class CategoryHelper implements Execute, Creatable, Editable, Viewable, D
             viewAllCategories();
         }
     }
-    // help methods for view prining all categories 
+    // help methods ->for view  all categories  only 
     private  void viewAllCategories(){
         System.out.println("📋 Available Categories:");
         for (int i = 0; i < CategoryController.getCategories().size(); i++) {
             System.out.println((i + 1) + ". " + CategoryController.getCategories().get(i).getName());
         }
     }
-    // help methods for view prining all categories and products in a category
-    private void viewCategoryForProducts(){
+
+    // help methods -> for view  all categories with products in a category
+    public static  boolean  viewCategoryForProducts(Scanner sc){
         Category category = getCategory(sc);
         if (category == null) {
             System.out.println("❌ No categories available to view products.");
-            return;
+            return false;
         }
         if (category.getProduct().isEmpty()) {
             System.out.println("❌ No products available in this category.");
+            return false;
         } else {
             System.out.println("📦 Products in Category: " + category.getName());
             System.out.println("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
@@ -132,6 +133,7 @@ public class CategoryHelper implements Execute, Creatable, Editable, Viewable, D
                 System.out.println((i + 1) + ". " + category.getProduct().get(i));
             }
         }
+        return true;    
     }
 
     @Override
@@ -191,7 +193,8 @@ public class CategoryHelper implements Execute, Creatable, Editable, Viewable, D
             System.out.println("🚫 Category deletion cancelled.");
         }
     }
-// help methods for  showing category in  for a product helper
+
+// help methods -> for  showing category in  for a product helper
     public static Category getCategory(Scanner sc) {
         if (CategoryController.isCategoryEmpty()) {
             return null;
