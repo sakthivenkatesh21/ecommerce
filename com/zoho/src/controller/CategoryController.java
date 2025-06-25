@@ -1,10 +1,10 @@
 package com.zoho.src.controller;
 
-import java.util.List;
 import com.zoho.src.model.Category;
+import java.util.List;
 
 public class CategoryController {
-    private static List<Category> category = DataManager.getDataManager().getCategory();
+    private static final List<Category> category = DataManager.getDataManager().getCategory();
     private static int idGenerator;
 
     public static boolean isCategoryEmpty() {

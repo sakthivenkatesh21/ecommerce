@@ -5,7 +5,7 @@ import java.util.List;
 
 public class SignIn {
 
-    private static List<User> user = DataManager.getDataManager().getUser();
+    private static final List<User> user = DataManager.getDataManager().getUser();
     private static boolean isValidUser = false;
 
     public static User validateLogIn(String email, String password) {
