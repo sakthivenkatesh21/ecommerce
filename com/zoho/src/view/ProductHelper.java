@@ -363,7 +363,7 @@ public class ProductHelper implements Execute, Creatable, Editable, Viewable, De
             }
         }
     } 
-
+// restock the products in the list
     private void  reStockAll(List<Product> product) {
         while(true){
             viewReStockk(product);
@@ -384,7 +384,7 @@ public class ProductHelper implements Execute, Creatable, Editable, Viewable, De
         }
        
     }
-
+// view the out of stock product
     private void  viewReStockk(List<Product> product) {  
         System.out.println("📦 Products available for restocking:");
         System.out.println("------------------------------------------------");

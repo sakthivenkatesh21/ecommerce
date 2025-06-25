@@ -6,5 +6,6 @@ public interface IDataValidation {
         String phone(String info);
         String password(String info);
         String address(String info);
+        String gender(String info);
 }
 

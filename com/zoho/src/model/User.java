@@ -70,7 +70,8 @@ public abstract class User {
     public void setGender(String gender) {
         this.gender = gender;
     }
-
+    
+// showing the menu for the role can Access 
     public void showMenu(Scanner sc,User loggedInUser){
         System.out.println("Welcome  " + loggedInUser.getName() + " to the E-commerce Platform");
         while (true) {

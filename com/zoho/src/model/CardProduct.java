@@ -56,7 +56,7 @@ public class CardProduct extends Product {
     public void setProducStatus(OrderStatus producStatus) {
         this.producStatus = producStatus;
     }
-
+// check card  quantity exits product stock
     public boolean canAddToCard() {
         
         return getStock() >= getQuantity();
@@ -67,7 +67,7 @@ public class CardProduct extends Product {
         System.out.println("Name                 : " + getProductName());
         System.out.println("Quantity Ordered     : " + quantity);
         System.out.println("Price                : $" + getPrice()*getQuantity());
-        System.out.println("Date Added           : " + getFormattedDate() + " " + getFormattedTime());
+        System.out.println("Date Time Added      : " + getFormattedDate() + " " + getFormattedTime());
         System.out.println("Order Status         : " + producStatus);
         System.out.println("==================================");
         return "";

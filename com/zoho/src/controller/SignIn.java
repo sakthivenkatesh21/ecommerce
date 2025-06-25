@@ -6,19 +6,14 @@ import java.util.List;
 public class SignIn {
 
     private static final List<User> user = DataManager.getDataManager().getUser();
-    private static boolean isValidUser = false;
-
+    
+// checking login
     public static User validateLogIn(String email, String password) {
         for (User data : user) {
             if (data.getEmail().equals(email) && data.getPassword().equals(password)) {
-                isValidUser = true;
                 return data;
             }
         }
         return null;
-    }
-
-    public boolean isValidUser() {
-        return isValidUser;
     }
 }

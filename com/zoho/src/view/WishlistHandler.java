@@ -156,7 +156,8 @@ public class WishlistHandler implements Execute, Creatable, Editable, Viewable, 
             System.out.println("🗑️ Product " + cardProduct.getProductName() + " has been removed from your cart.");
         }
     }
-
+    
+// checking the card product quantity is availble or out of stock
     public void checkQuantityExist(List<CardProduct> cardProduct) {
         for (CardProduct obj : cardProduct) {
             Product products = ProductController.isProductExist(obj.getId());
@@ -183,7 +184,7 @@ public class WishlistHandler implements Execute, Creatable, Editable, Viewable, 
             }
         }
     }
-
+// helper methods for update and remove common logics
     private CardProduct checkCardProduct() {
         view();
         System.out.println("🔢 Enter the Product ID from the cart \n Or Enter '-1' to Exit: ");

@@ -194,7 +194,7 @@ public class CategoryHelper implements Execute, Creatable, Editable, Viewable, D
         }
     }
 
-// help methods -> for  showing category in  for a product helper
+// help methods -> for  choosing  category in  for a product helper
     public static Category getCategory(Scanner sc) {
         if (CategoryController.isCategoryEmpty()) {
             return null;

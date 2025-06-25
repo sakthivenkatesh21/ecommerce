@@ -29,7 +29,6 @@ public class Paytm implements IPaymentGateway {
             System.out.println("Processing payment of " + amount + " using " + paymentMethod + " with wallet ID: " + walletId + ".");
             System.out.println("Payment processed successfully.");
             Thread.sleep(2000);
-            // return confirmPayment(generateTransactionId());
         } catch (IllegalArgumentException | InterruptedException e) {
             if(e instanceof InterruptedException) {
                 System.out.println("Payment processing interrupted.");

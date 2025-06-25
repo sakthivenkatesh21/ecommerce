@@ -16,7 +16,7 @@ public class OrderController {
     public static boolean isOrderEmpty() {
         return orders.isEmpty();
     }
-
+// Order creation
     public  static Order  createOrder(Card card, double amount,String payment, User loggedInUser) {
        
         Order order = new Order(++idGenerator,(Client)loggedInUser,((Client)loggedInUser).getAddress(),
@@ -30,6 +30,7 @@ public class OrderController {
         return order;
         
     }
+    // updating  seller's sales and profit and adding product to seller's saled list
     private static void updateSellerSales(List<CardProduct> products) {
         for(CardProduct product : products) {
             product.setProducStatus(OrderStatus.CONFIRMED);
@@ -38,12 +39,10 @@ public class OrderController {
             product.getSeller().getSaledList().add(product);
         }
     }
-
+    // adding product buyed to order list
     private  static List<CardProduct>  productOrder(List<CardProduct> orderProducts, List<CardProduct> cardProducts) {
-        for (CardProduct product : cardProducts) {    
+        for (CardProduct product : cardProducts)
                 orderProducts.add(product);
-               
-        }   
         return orderProducts;
     }
 

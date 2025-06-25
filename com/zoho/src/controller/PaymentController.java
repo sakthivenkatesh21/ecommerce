@@ -9,6 +9,7 @@ import com.zoho.src.paymentCreditionals.PaymentProcessing;
 public class PaymentController {
     private static PaymentProcessing paymentProcessing;
 
+// Method  overloaded to handle different payment methods
     public static String pay(double amount, String paymentMethod, String credentials) {
         return switch (paymentMethod) {
             case "GPay" -> 
@@ -19,7 +20,7 @@ public class PaymentController {
                  null;
         };
     }
-
+// common logic for pay method to process payment
     private static String process(IPaymentGateway paymentGateway) {
         paymentProcessing = new PaymentProcessing(paymentGateway);
         return paymentProcessing.processPayment();

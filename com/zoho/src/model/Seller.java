@@ -16,7 +16,7 @@ public class Seller extends User {
     private String company;
     private String companyAddress;
     private List<Product> sellerProduct;
-    private List<CardProduct> saledList; 
+    private List<CardProduct> saledList;
     private final int SELLER = 2;
     
     public Seller(){}
@@ -31,7 +31,7 @@ public class Seller extends User {
         this.sellerProduct = new ArrayList<>();
         this.saledList = new ArrayList<>();
     }
-    
+    // list of access can do user
     private void list(Scanner sc, User loggedInUser){ 
         this.operations = new Execute[]{
             new UserHelper(loggedInUser, sc),

@@ -34,12 +34,9 @@ public class Client extends User {
             new ProductHelper(sc, loggedInUser),
             new WishlistHandler(sc,loggedInUser),
             new OrderHelper(sc, loggedInUser),
-            
-           
-            
         };
     }
-
+// list of action  done by user 
     @Override
     public Execute[] getOperations(Scanner sc, User loggedInUser) {
         if (operations == null) {
@@ -72,7 +69,6 @@ public class Client extends User {
         this.previousOrderProduct = previousOrderProduct;
     }
 
-    @SuppressWarnings("override")
     public int getRole(){
         return CUSTOMER;
     }

@@ -4,7 +4,8 @@ import com.zoho.src.view.Navigation;
 
 public class Ecommerce {
     public static void main(String[] args) {
-        Navigation navigation = new Navigation();
+
+        Navigation navigation = Navigation.getNavigation();
         navigation.menu();
     }
 }

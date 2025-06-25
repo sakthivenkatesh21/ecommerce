@@ -7,12 +7,17 @@ public  class Navigation {
 
     private final Scanner sc;
     private final LoggingCredentials credentials;
+    private static Navigation getNavigation;
 
+    // static block to feed some  data  
+    static
+    {
+       new InputProduct();
 
-    public Navigation() {
+    }
+    private Navigation() {
         sc = new Scanner(System.in);
         credentials = new LoggingCredentials();
-        InputProduct inputProduct = new InputProduct();
     }
 
     public void menu() {
@@ -43,10 +48,19 @@ public  class Navigation {
             }
         }
     }
+    // exit method and closing Scanner
     private void exit(Scanner sc) {
         try (sc) {
             System.out.println("Thank you for using E - Commerce");
         }
         System.exit(0);
+    }
+
+    // singleton  method   for Navigation
+    public static Navigation getNavigation() {
+        if (getNavigation == null) {
+            getNavigation = new Navigation();
+        }
+        return getNavigation;
     }
 }

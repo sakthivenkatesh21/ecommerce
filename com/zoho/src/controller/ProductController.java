@@ -11,7 +11,7 @@ import com.zoho.src.model.User;
 public class ProductController {
     private static int idGenerator;
     private static final List<Product> products = DataManager.getDataManager().getProduct();
-
+// creating product
     public static Product createProduct(String productName, String productDescription, double price, int stock, Category category, User loggedInUser) {
         if (!products.isEmpty() && isProductExists(productName,loggedInUser) != null) {
             return null;
@@ -22,7 +22,7 @@ public class ProductController {
         ((Seller)loggedInUser).getSellerProduct().add(newProduct);
         return newProduct;
     }
-
+// updating product
     public static boolean updateProduct(int id, String productName, String productDescription, double price, int stock) {
         Product product = isProductExist(id);
         if (product != null) {
@@ -34,7 +34,7 @@ public class ProductController {
         }
         return false;
     }
-
+// removing product
     public static boolean removeProduct(Product product) {
         if (product != null) {
             products.remove(product);
@@ -46,7 +46,7 @@ public class ProductController {
         }
         return false;
     }
-
+// helper methods for update 
     public static Product isProductExist(int productId) {
         for (Product obj : products) {
             if (obj.getId() == productId) {
@@ -55,7 +55,7 @@ public class ProductController {
         }
         return null;
     }
-
+// check if duplicate product exists  for the same seller 
     public static Product isProductExists(String productName, User loggedInUser) {
         for (Product obj : products) {
             if (obj.getProductName().equals(productName) && obj.getSeller().getId() == loggedInUser.getId()) {
@@ -64,6 +64,7 @@ public class ProductController {
         }
         return null;
     }
+
     public static List<Product> isProductExists(String productName) {
         List<Product> searchProducts = new ArrayList<>();
         for (Product obj : products) {
@@ -74,7 +75,8 @@ public class ProductController {
         return searchProducts.isEmpty() ? null : searchProducts;
     }
       
-
+// remove product by category
+ // this method will remove all products in the given category
     public static boolean removeProductByCategory(List<Product> productList) {
         int removeCount = 0;
         int  size = productList.size();
@@ -87,6 +89,7 @@ public class ProductController {
         return removeCount == size;
       
     }
+// get all products of a category for a seller only seller added Products will be returned
     public static List<Product> getSellerProducts(Category category , User loggedInUser) {
         List<Product> selleProducts = new ArrayList<>();
          for (Product obj : category.getProduct()) {
@@ -96,7 +99,8 @@ public class ProductController {
         }
         return selleProducts;
     }
-    public static   boolean isProductExistCard(List<CardProduct> product , int id) {
+    // check wishcard product contains duplicate or not
+    public static boolean isProductExistCard(List<CardProduct> product, int id) {
         for (CardProduct obj : product) {
             if (obj.getId() == id) {
                 return true;
@@ -104,15 +108,16 @@ public class ProductController {
         }
         return false;
     }
+    // get all products
     public static List<Product> getProducts() {
         if (products.isEmpty()) {
             return null;
         }
         return products;
     }
-
-    public static  boolean  reduceStock(List<CardProduct> cardProducts){
-        for(CardProduct obj : cardProducts){
+// reduce stock of product after payment success
+    public static boolean reduceStock(List<CardProduct> cardProducts) {
+        for (CardProduct obj : cardProducts) {
             Product product = isProductExist(obj.getId());
             if(product==null){
                 return false;
@@ -121,7 +126,7 @@ public class ProductController {
         }
         return true;
     }
-
+// checking  seller product is out of stock 
     public  static boolean  getStockIsEmpty(User loggedInUser) {
         
         for (Product product : products) {
@@ -131,6 +136,7 @@ public class ProductController {
         }
         return true;
     }
+    // returning the seller out of stock products
     public static List<Product>  getEmptyStockProducts(User loggedInUser) {
         List<Product> emptyStockProducts = new ArrayList<>();
         for (Product product : products) {
