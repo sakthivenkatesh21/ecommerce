@@ -104,14 +104,17 @@ public class ProductHelper implements Execute, Creatable, Editable, Viewable, De
     @Override
     public void view() {
         if (loggedInUser.getRole() == SELLER) {
-            CategoryHelper.viewCategoryForProducts(sc);   
-        } 
+            CategoryHelper.viewCategoryForProducts(sc);
+        }
         else {
             while (true) {
                 if (!clientView()) {
                     System.out.println("⚠️ No products available. Please add a product first.");
                     return;
                 }
+                // if(viewMenu()==0){
+                //     return;
+                // }
                 System.out.println("------------------------------------------------");
                 System.out.println("Choose an option:");
                 System.out.println("------------------------------------------------");
@@ -125,7 +128,7 @@ public class ProductHelper implements Execute, Creatable, Editable, Viewable, De
                     sc.nextLine();
                     switch (choice) {
                         case 1 ->  search();
-                        case 2 ->  addWishList();
+                        case 2 ->  addingProductToCart();
                         case 0 -> {
                             System.out.println("🔙 Exiting to previous menu.");
                             return;
@@ -141,7 +144,34 @@ public class ProductHelper implements Execute, Creatable, Editable, Viewable, De
             }
         }
     }
-
+    // private int viewMenu(){
+    //     System.out.println("------------------------------------------------");
+    //     System.out.println("Choose an option:");
+    //     System.out.println("------------------------------------------------");
+    //     System.out.println("1. 🔎 Search Product");
+    //     System.out.println("2. ❤️ Add to Wish List");
+    //     System.out.println("0. 🔙 Back (Exit)");
+    //     System.out.println("------------------------------------------------");
+    //     System.out.print("Enter your choice: ");
+    //     try {
+    //         int choice = sc.nextInt();
+    //         sc.nextLine();
+    //         switch (choice) {
+    //             case 1 ->  search();
+    //             case 2 ->  addingProductToCart();
+    //             case 0 -> {
+    //                 System.out.println("🔙 Exiting to previous menu.");
+    //                 return 0;
+    //             }
+    //             default -> System.out.println("❌ Invalid choice. Please try again.");
+    //         }
+    //     } catch (InputMismatchException e) {
+    //         System.out.println("❌ Invalid input. Please enter a number.");
+    //         sc.nextLine();
+    //     } catch (Exception e) {
+    //         System.out.println("❌ An unexpected error occurred: " + e.getMessage());
+    //     }
+    // }
     @Override
     public void update() {
         ValidData validator = new ValidData(sc);
@@ -238,6 +268,9 @@ public class ProductHelper implements Execute, Creatable, Editable, Viewable, De
             System.out.println("✅ Product found in Category: " + obj.getCategory().getName());
             System.out.println("📝 Product Details: \n  " + obj);
         }
+        // if(viewMenu()==0){
+            
+        
         System.out.println(" *        🔎 Product Search Options    *" );
         System.out.println("****************************************");
         System.out.println("1. ❤️ Add to Wish List");
@@ -265,18 +298,19 @@ public class ProductHelper implements Execute, Creatable, Editable, Viewable, De
     }
 
 //  Adding Product to Wish List(View And Add Product to Wish List)
-    private void addWishList() {
+    // private void addWishList() {
       
-        while (true) {
-            if(clientView()){
-                if (!addingProductToCart()) {
-                    System.out.println("🔙 Exiting to previous menu.");
-                    return;
-                }
-            }      
-        }
-    }
-// logic of adding Product to Wish List (View and Add Product to Wish List)
+    //     while (true) {
+    //         if(clientView()){
+    //             if (!addingProductToCart()) {
+    //                 System.out.println("🔙 Exiting to previous menu.");
+    //                 return;
+    //             }
+    //         }      
+    //     }
+    // }
+    
+// logic of adding Product to Wish List (Add Product to Wish List)
 
     private boolean addingProductToCart() {
         System.out.println("🆔 Enter the Product ID to add to cart or 0 to exit:");

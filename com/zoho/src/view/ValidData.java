@@ -83,6 +83,7 @@ public class ValidData implements IDataValidation {
 		}
 	}
 
+    @Override
 	public String gender(String info) {
 		System.out.println("1️⃣ Male\n2️⃣ Female\n3️⃣ Other");
 		System.out.print(info);

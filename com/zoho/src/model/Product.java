@@ -73,7 +73,7 @@ public class Product {
             throw new IllegalArgumentException("Stock cannot be negative.");
         }      
     }
-
+// checking while product adding to the card
     public boolean isAvailableStock() {
         return stock <= 0;
     }

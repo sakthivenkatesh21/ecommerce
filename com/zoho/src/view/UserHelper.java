@@ -155,7 +155,7 @@ public class UserHelper implements Execute, Editable, Viewable {
                             ((Seller) loggedInUser).setCompanyAddress(check.address("📍 Enter new company address: "));
                             System.out.println("✅ Company address updated successfully." + ((Seller) loggedInUser).getCompanyAddress());
                         } else {
-                            System.out.println("❌ Invalid choice for Client, no updates made.");
+                            System.out.println("❌ Invalid choice , no updates made.");
                         }
                     }
                     case 0 -> {
@@ -166,7 +166,7 @@ public class UserHelper implements Execute, Editable, Viewable {
                 }
 
             } catch (InputMismatchException e) {
-                System.out.println("❌ Invalid input. Please enter a valid number.");
+                System.out.println("❌ Invalid Input. Please enter a valid number.");
                 sc.nextLine();
             } catch (Exception e) {
                 System.out.println("❌ An unexpected error occurred: " + e.getMessage());
@@ -191,18 +191,17 @@ public class UserHelper implements Execute, Editable, Viewable {
                 System.out.println("❌ Invalid User Type. Please enter 1 for Client or 2 for Seller.");
             } catch (InputMismatchException e) {
                 System.out.println("❌ Invalid input. Please enter a valid number.");
-                sc.nextLine(); 
+                sc.nextLine();
             }
-        }       
-        if(userType ==1){
+        }
+        if(userType == 1){
             return new String[]{name, phone, email, password, gender, check.address("🏠 Enter Address:")};   
         }
         else {
             return new String[]{name, phone, email, password, gender, check.name("🏢 Enter a Company Name :"), check.address("📍 Enter a Company Address :")};
-        }           
-    }        
-            
-        
+        }
+    }
+
 
 // check duplicate Email exists
     private static String isEmailExists(String email, ValidData check,User loggedInUser) {

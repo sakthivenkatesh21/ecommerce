@@ -109,7 +109,7 @@ public class CategoryHelper implements Execute, Creatable, Editable, Viewable, D
         }
     }
     // help methods ->for view  all categories  only 
-    private  void viewAllCategories(){
+    private  static  void viewAllCategories(){
         System.out.println("📋 Available Categories:");
         for (int i = 0; i < CategoryController.getCategories().size(); i++) {
             System.out.println((i + 1) + ". " + CategoryController.getCategories().get(i).getName());
@@ -138,13 +138,9 @@ public class CategoryHelper implements Execute, Creatable, Editable, Viewable, D
 
     @Override
     public void update() {
-        if (CategoryController.isCategoryEmpty()) {
-            System.out.println("📂 No categories available to update.");
-            return;
-        }
-        Category category = checkGetCategory();
+        Category category = getCategory(sc);
         if (category == null) {
-            System.out.println("❌ No category found with the given number.");
+            System.out.println("📂 No categories available to update");
             return;
         }
         System.out.println("✏️ You are about to update the category: " + category.getName());
@@ -171,13 +167,9 @@ public class CategoryHelper implements Execute, Creatable, Editable, Viewable, D
 
     @Override
     public void delete() {
-        if (CategoryController.isCategoryEmpty()) {
-            System.out.println("❌ No categories available to delete.");
-            return;
-        }
-        Category category = checkGetCategory();
+        Category category = getCategory(sc);
         if (category == null) {
-            System.out.println("❌ No category found with the given number.");
+            System.out.println("❌ No categories available to delete.");
             return;
         }
 
@@ -194,15 +186,16 @@ public class CategoryHelper implements Execute, Creatable, Editable, Viewable, D
         }
     }
 
-// help methods -> for  choosing  category in  for a product helper
-    public static Category getCategory(Scanner sc) {
+// help methods ;
+//->  for update() and delete()  common logic  ( return the selected categories for update or delete)
+//->  for add() product before   choosing  category(return the selected category to Product helper)
+//->  for viewAllTheCategoryProduct   its  return the category to viewCategoryForProducts()
+
+    public static  Category getCategory(Scanner sc) {
         if (CategoryController.isCategoryEmpty()) {
             return null;
         }
-        System.out.println("📋 Available Categories:");
-        for (int i = 0; i < CategoryController.getCategories().size(); i++) {
-            System.out.println((i + 1) + ". " + CategoryController.getCategories().get(i).getName());
-        }
+        viewAllCategories();// display all categories
         int categoryIndex;
         do {
             System.out.println("🔢 Select a category by entering the corresponding number:");
@@ -210,19 +203,6 @@ public class CategoryHelper implements Execute, Creatable, Editable, Viewable, D
             sc.nextLine();
         } while (categoryIndex < 0 || categoryIndex >= CategoryController.getCategories().size());
 
-        return CategoryController.getCategories().get(categoryIndex);
-    }
-
-//  common logic for update and delete
-    private Category checkGetCategory() {
-        viewAllCategories();
-        System.out.println("🔢 Enter the number of the category you want:");
-        int categoryIndex = sc.nextInt() - 1;
-        sc.nextLine();
-        if (categoryIndex < 0 || categoryIndex >= CategoryController.getCategories().size()) {
-            System.out.println("❌ Invalid category number. Please try again.");
-            return null;
-        }
         return CategoryController.getCategories().get(categoryIndex);
     }
 }
